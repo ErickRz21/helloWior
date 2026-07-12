@@ -41,7 +41,7 @@ a {
 }
 
 .arrow {
-  @apply absolute top-1/2 z-10 my-5 hidden -translate-y-1/2 transform cursor-pointer rounded-full bg-white p-3 text-2xl text-black opacity-70 shadow duration-200 hover:opacity-90 lg:block dark:bg-neutral-500;
+  @apply absolute top-1/2 z-10 hidden -translate-y-1/2 transform cursor-pointer rounded-full bg-white p-3 text-2xl text-black opacity-70 shadow duration-200 hover:opacity-90 lg:block dark:bg-neutral-500;
 }
 
 .more-info {

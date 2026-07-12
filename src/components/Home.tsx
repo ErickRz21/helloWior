@@ -116,8 +116,7 @@ const Home = () => {
             Explore Exciting Events
           </motion.h2>
           <motion.button
-            id="more-info"
-            className="my-3 scale-150"
+            className="more-info my-5 scale-150"
             onClick={() => navigate("/category/music")}
           >
             Get Started
