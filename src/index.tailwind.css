@@ -40,15 +40,15 @@ a {
   @apply duration-300 hover:text-indigo-600 hover:dark:text-indigo-400;
 }
 
-#arrow {
+.arrow {
   @apply absolute top-1/2 z-10 my-5 hidden -translate-y-1/2 transform cursor-pointer rounded-full bg-white p-3 text-2xl text-black opacity-70 shadow duration-200 hover:opacity-90 lg:block dark:bg-neutral-500;
 }
 
-#more-info {
-  @apply rounded-xl border-2 border-black px-3 py-2 text-sm font-bold text-black duration-200 hover:bg-indigo-400 dark:border-white dark:text-white;
+.more-info {
+  @apply rounded-xl border-2 border-black px-3 py-2 text-sm font-bold text-black duration-200 hover:bg-indigo-400 hover:text-white dark:border-white dark:text-white;
 }
 
-#icon {
+.icon {
   @apply text-2xl duration-300 hover:text-indigo-600 lg:text-3xl dark:hover:text-indigo-400;
 }
 

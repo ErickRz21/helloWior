@@ -1,8 +1,9 @@
 import { motion } from "framer-motion";
-import useTicketData from "../hooks/useTicketData"; // Replace with your actual hook path
-import { useEffect, useState } from "react";
+import useTicketData from "../hooks/useTicketData";
+import { useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { FaArrowDown } from "react-icons/fa"; // Importing FontAwesome arrow icon
+import { FaArrowDown } from "react-icons/fa";
+import getBestImage from "../hooks/getBestImage";
 
 const Home = () => {
   const navigate = useNavigate();
@@ -37,22 +38,18 @@ const Home = () => {
     },
   };
 
-  const { data: events, error } = useTicketData("Music"); // Replace "music" with your desired query
-  const [eventCards, setEventCards] = useState<
-    { image: string; title: string }[]
-  >([]);
+  const { data: events, error } = useTicketData("Music");
 
-  useEffect(() => {
-    if (events) {
-      const mappedEvents = events
-        .map((event: { images?: { url: string }[]; name: string }) => ({
-          image: event.images?.[0]?.url || "/default-image.jpg", // Fallback image
+  const eventCards = useMemo(
+    () =>
+      events
+        ?.slice(0, 8)
+        .map((event) => ({
+          image: getBestImage(event.images),
           title: event.name,
-        }))
-        .slice(0, 8); // Limit amount of cards
-      setEventCards(mappedEvents);
-    }
-  }, [events]);
+        })) ?? [],
+    [events],
+  );
 
   return (
     <motion.div

@@ -18,5 +18,11 @@ export type EventType = {
       name: string;
     }[];
   };
-  images?: { url: string }[];
+  images?: {
+    url: string;
+    width?: number;
+    height?: number;
+    ratio?: string;
+    fallback?: boolean;
+  }[];
 };

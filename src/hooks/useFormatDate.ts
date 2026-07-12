@@ -1,7 +1,7 @@
 // src/hooks/useFormattedDate.ts
 import { DateTime } from "luxon";
 
-const useFormatDate = (localDate: string, localTime?: string) => {
+const formatDate = (localDate: string, localTime?: string) => {
   // Parse the localDate and localTime to create a full ISO date string
   const localDateTime = localTime ? `${localDate}T${localTime}` : localDate;
 
@@ -14,4 +14,4 @@ const useFormatDate = (localDate: string, localTime?: string) => {
   return dateTime.toFormat("dd/MMM/yyyy • h:mm a");
 };
 
-export default useFormatDate;
+export default formatDate;

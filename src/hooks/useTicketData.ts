@@ -10,7 +10,7 @@ const useTicketData = (keyword: string) => {
   const API_KEY = import.meta.env.VITE_TICKETMASTER_API_KEY;
 
   const fetchEvents = useCallback(async () => {
-    if (!keyword || keyword.length < 0) return; // Only fetch if keyword is at least 3 characters
+    if (!keyword || keyword.length < 3) return; // Only fetch if keyword is at least 3 characters
 
     setLoading(true);
     setError(null);

@@ -30,7 +30,7 @@ const EventSlider: React.FC<EventSliderProps> = ({ events }) => {
       </div>
 
       {/* Arrow Buttons */}
-      <button id="arrow" className="left-5" onClick={() => scroll("left")}>
+      <button className="arrow left-5" onClick={() => scroll("left")}>
         <svg
           className="h-4 w-4"
           aria-hidden="true"
@@ -49,7 +49,7 @@ const EventSlider: React.FC<EventSliderProps> = ({ events }) => {
         <span className="sr-only">Left</span>
       </button>
 
-      <button id="arrow" className="right-5" onClick={() => scroll("right")}>
+      <button className="arrow right-5" onClick={() => scroll("right")}>
         <svg
           className="h-4 w-4"
           aria-hidden="true"

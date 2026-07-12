@@ -1,5 +1,7 @@
-import useFormatDate from "../hooks/useFormatDate";
+import React from "react";
+import formatDate from "../hooks/useFormatDate";
 import Loading from "./Loading";
+import getBestImage from "../hooks/getBestImage";
 
 interface SearchResultsProps {
   loading: boolean;
@@ -39,7 +41,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
     <ul className="mt-3 space-y-4">
       {sortedEvents.map((event) => {
         const { localDate, localTime } = event.dates.start;
-        const formattedDate = useFormatDate(localDate, localTime);
+        const formattedDate = formatDate(localDate, localTime);
 
         return (
           <li
@@ -49,7 +51,7 @@ const SearchResults: React.FC<SearchResultsProps> = ({
             {/* Event Image */}
             <div className="w-full lg:w-3/5">
               <img
-                src={event.images?.[0]?.url}
+                src={getBestImage(event.images)}
                 alt={event.name}
                 className="h-52 w-full rounded-2xl border object-cover shadow lg:h-64 dark:border-neutral-600"
                 loading="lazy"
@@ -82,16 +84,14 @@ const SearchResults: React.FC<SearchResultsProps> = ({
               </p>
 
               {/* More Info Button */}
-              <button className="my-5">
-                <a
-                  href={event.url}
-                  target="_blank"
-                  rel="noreferrer"
-                  id="more-info"
-                >
-                  More Info
-                </a>
-              </button>
+              <a
+                href={event.url}
+                target="_blank"
+                rel="noreferrer"
+                className="more-info my-5 inline-block"
+              >
+                More Info
+              </a>
             </div>
           </li>
         );

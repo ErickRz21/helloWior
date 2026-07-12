@@ -18,7 +18,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub"
-            id="icon"
+            className="icon"
           >
             <FaGithub />
           </a>
@@ -27,7 +27,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            id="icon"
+            className="icon"
           >
             <FaInstagram />
           </a>

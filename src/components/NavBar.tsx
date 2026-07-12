@@ -101,10 +101,10 @@ const NavBar = () => {
         {/* Desktop icons */}
         <div className="hidden items-center space-x-4 text-black lg:flex dark:text-white">
           <Link to="/calendar">
-            <FaCalendarAlt size={20} id="icon" />
+            <FaCalendarAlt size={20} className="icon" />
           </Link>
           <button onClick={() => setSearchOpen(!searchOpen)}>
-            <FaSearch size={20} id="icon" />
+            <FaSearch size={20} className="icon" />
           </button>
         </div>
       </div>

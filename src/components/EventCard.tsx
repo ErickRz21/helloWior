@@ -1,6 +1,7 @@
 import React from "react";
 import { EventType } from "../types/EventType";
-import useFormatDate from "../hooks/useFormatDate";
+import formatDate from "../hooks/useFormatDate";
+import getBestImage from "../hooks/getBestImage";
 
 interface EventCardProps {
   event: EventType;
@@ -9,14 +10,14 @@ interface EventCardProps {
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
   // Destructure localDate and localTime from each event's dates
   const { localDate, localTime } = event.dates.start;
-  const formattedDate = useFormatDate(localDate, localTime);
+  const formattedDate = formatDate(localDate, localTime);
 
   return (
     <div className="flex h-[400px] min-w-[260px] max-w-[260px] flex-col items-center justify-center overflow-hidden rounded-3xl border border-neutral-200 bg-white shadow-md lg:h-[430px] lg:min-w-[300px] lg:max-w-[300px] dark:border-neutral-700 dark:bg-neutral-800">
-      {event.images && event.images[0] && (
+      {event.images && event.images.length > 0 && (
         <img
           className="h-full w-full object-cover"
-          src={event.images[0].url}
+          src={getBestImage(event.images)}
           alt={event.name}
           loading="lazy"
         />
@@ -36,9 +37,9 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
         <p>
           <span>Price: </span>
           {event.priceRanges &&
-          event.priceRanges.length > 0 &&
-          typeof event.priceRanges[0].min === "number" &&
-          typeof event.priceRanges[0].max === "number" ? (
+            event.priceRanges.length > 0 &&
+            typeof event.priceRanges[0].min === "number" &&
+            typeof event.priceRanges[0].max === "number" ? (
             <>
               ${event.priceRanges[0].min} - ${event.priceRanges[0].max}{" "}
               {event.priceRanges[0].currency || ""}
@@ -47,13 +48,16 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
             "N/A"
           )}
         </p>
-        <button className="my-3 flex w-full justify-end">
-          {event.url && (
-            <a href={event.url} target="_blank" rel="noreferrer" id="more-info">
-              More info
-            </a>
-          )}
-        </button>
+        {event.url && (
+          <a
+            href={event.url}
+            target="_blank"
+            rel="noreferrer"
+            className="more-info my-3 flex justify-center"
+          >
+            More info
+          </a>
+        )}
       </div>
     </div>
   );

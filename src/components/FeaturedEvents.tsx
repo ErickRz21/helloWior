@@ -1,6 +1,7 @@
 import useTicketEvents from "../hooks/useTicketData";
-import { EventType } from "../types/EventType"; // Adjust the path based on your project structure
+import { EventType } from "../types/EventType";
 import Loading from "./Loading";
+import getBestImage from "../hooks/getBestImage";
 
 const FeaturedEvents = () => {
   // Utilize the hook with a specific keyword for fetching events in Monterrey
@@ -29,7 +30,7 @@ const FeaturedEvents = () => {
             className="group relative overflow-hidden rounded-3xl shadow-lg"
           >
             <img
-              src={event.images?.[0]?.url || "/placeholder.jpg"}
+              src={getBestImage(event.images)}
               alt={event.name}
               className="h-72 w-full transform object-cover duration-700 group-hover:scale-105 lg:h-[450px]"
             />
